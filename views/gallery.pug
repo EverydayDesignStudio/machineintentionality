@@ -1,0 +1,70 @@
+extends base
+
+block content
+    section.gallery-section.padding-b
+        .container
+            .gallery
+                ul#myTab.nav.nav-tabs.pl-2.pl-md-5(role='tablist')
+                    li.nav-item
+                        a#all-tab.nav-link.active(data-toggle='tab' href='#all' role='tab' aria-controls='all' aria-selected='true') All
+                    li.nav-item
+                        a#round1-tab.nav-link(data-toggle='tab' href='#round1' role='tab' aria-controls='round1' aria-selected='true') Round 1
+                    li.nav-item
+                        a#round2-tab.nav-link(data-toggle='tab' href='#round2' role='tab' aria-controls='round2' aria-selected='false') Round 2
+                #myTabContent.tab-content.gallery-box
+                    #all.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='all-tab')
+                        each u in users
+                            - if(u.round1.length || u.round2.length)
+                                .row
+                                    each val, index in u.round1
+                                        if(!val.endsWith("mp4"))
+                                            .col-12.col-md-2
+                                                a.js-lightcase-slideshow(href=`/img/gallery/${u.round1[index]}` data-lc-caption=`Name = ${u.name}. Printer = ${u.printer}` data-rel='lightcase:myCollection:slideshow')
+                                                    img(src=`/img/gallery/${u.round1[index]}` alt=`${u.round1[index]}`) 
+                                        if(val.endsWith("mp4"))
+                                            .col-12.col-md-4
+                                                a.js-lightcase-slideshow(href=`/img/gallery/${u.round1[index]}` data-rel='lightcase:myCollection:slideshow')
+                                                    video(controls='')
+                                                        source(src=`/img/gallery/${u.round1[index]}` type='video/mp4')
+                                .row
+                                    each val, index in u.round2
+                                        if(!val.endsWith("mp4"))
+                                            .col-12.col-md-2
+                                                a.js-lightcase-slideshow(href=`/img/gallery/${u.round2[index]}` data-lc-caption=`Name = ${u.name}. Printer = ${u.printer}` data-rel='lightcase:myCollection:slideshow')
+                                                    img(src=`/img/gallery/${u.round2[index]}` alt=`${u.round2[index]}`)
+                                        if(val.endsWith("mp4"))
+                                            .col-12.col-md-4
+                                                a.js-lightcase-slideshow(href=`/img/gallery/${u.round2[index]}` data-rel='lightcase:myCollection:slideshow')
+                                                    video(controls='')
+                                                        source(src=`/img/gallery/${u.round2[index]}` type='video/mp4')     
+                                hr
+                    #round1.tab-pane.fade.show(role='tabpanel' aria-labelledby='round1-tab')
+                        each u in users
+                            - if(u.round1.length)
+                                .row
+                                    each val, index in u.round1
+                                        if(!val.endsWith("mp4"))
+                                            .col-12.col-md-2
+                                                a.js-lightcase-slideshow(href=`/img/gallery/${u.round1[index]}` data-lc-caption=`#${u.printer} #round1` data-rel='lightcase:myCollection1:slideshow')
+                                                    img(src=`/img/gallery/${u.round1[index]}` alt=`${u.round1[index]}`) 
+                                        if(val.endsWith("mp4"))
+                                            .col-12.col-md-4
+                                                a.js-lightcase-slideshow(href=`/img/gallery/${u.round1[index]}` data-lc-caption=`#${u.printer} #round1` data-rel='lightcase:myCollection1:slideshow')
+                                                    video(width='300' controls='')
+                                                        source(src=`/img/gallery/${u.round1[index]}` type='video/mp4')
+                                hr
+                    #round2.tab-pane.fade(role='tabpanel' aria-labelledby='round2-tab')
+                        each u in users
+                            - if(u.round2.length)
+                                .row
+                                    each val, index in u.round2
+                                        if(!val.endsWith("mp4"))
+                                            .col-12.col-md-2
+                                                a.js-lightcase-slideshow(href=`/img/gallery/${u.round2[index]}` data-lc-caption=`#${u.printer} #round2` data-rel='lightcase:myCollection2:slideshow')
+                                                    img(src=`/img/gallery/${u.round2[index]}` alt=`${u.round2[index]}`)
+                                        if(val.endsWith("mp4"))
+                                            .col-12.col-md-4
+                                                a.js-lightcase-slideshow(href=`/img/gallery/${u.round2[index]}` data-lc-caption=`#${u.printer} #round2` data-rel='lightcase:myCollection2:slideshow')
+                                                    video(width='300' controls='')
+                                                        source(src=`/img/gallery/${u.round2[index]}` type='video/mp4')            
+                                hr

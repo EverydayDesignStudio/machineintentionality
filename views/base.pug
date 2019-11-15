@@ -1,0 +1,42 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible' content='ie=edge')
+        title #{title}
+        link(rel='icon' type='image/x-icon' href='img/logos/favicon.ico')
+        link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+        link(rel='stylesheet' href='https://use.typekit.net/nte0lqu.css')
+        link(href='/css/style.css' rel='stylesheet')
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous")
+        link(rel="stylesheet" type="text/css" href="/lightcase/src/css/lightcase.css")
+    if(bg)
+        body(background=`${bg}`)
+    else
+        body(style=`${color}`)
+
+    //HEADER
+    include _header
+
+    //CONTENT
+    block content
+
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+    script(type='text/javascript' src='/lightcase/src/js/lightcase.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.0/jquery.mobile-events.min.js' integrity='sha256-cuMa+oMptJVg3u5gmAs3xS8n/8aeJsNndROwktxaY6c=' crossorigin='anonymous')
+    script(type='text/javascript').
+        jQuery(document).ready(function ($) {
+        $('a[data-rel^=lightcase]').lightcase();
+        $('.js-lightcase-slideshow').lightcase({
+        transition: 'fade',
+        fullscreenModeForMobile: true,
+        slideshowAutoStart: false
+        });
+        });
+    script(src='/js/script.js')
+    script(src='/js/bundle.js')
+  

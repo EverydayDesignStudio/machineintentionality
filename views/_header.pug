@@ -1,0 +1,30 @@
+header.header
+    nav.navbar.navbar-expand-lg.navbar-light
+        .container
+            a.navbar-brand(href='/')
+                .slanted-border.bg-logo
+                    .first
+                        h1 Machine Intentionality
+                    .second
+                        h1 MI
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarResponsive')
+                .icon.nav-icon
+                    span
+                    span
+                    span
+            #navbarResponsive.collapse.offset.navbar-collapse
+                ul.navbar-nav.menu_nav.justify-content-center
+                    li.nav-item(class=(title === "About" ? "active" : undefined))
+                        a.nav-link(href='/') About
+                    li.nav-item(class=(title === "Print" ? "active" : undefined))
+                        a.nav-link(href='/print') Print
+                    li.nav-item(class=(title === "Gallery" ? "active" : undefined))
+                        a.nav-link(href='/gallery') Gallery
+                    if(user)
+                        if user.role === 'admin'
+                            li.nav-item.dropdown(class=((title === "Create your account" || title === "User List") ? "active" : undefined))
+                                a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                                    | Manage
+                                .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdown')
+                                    a.dropdown-item(class=(title === "User List" ? "active" : undefined), href='/users') Users                                
+                                    a.dropdown-item(class=(title === "Create your account" ? "active" : undefined), href='/signup') Signup

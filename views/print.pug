@@ -1,0 +1,184 @@
+extends base
+
+block content
+    section.login-section.padding-b
+        .container
+            .login.px-3.py-3
+                .row
+                    .col-md-6(align="center")
+                        if user
+                            div.mb-3.mb-md-0= `Welcome ${user.name}!`
+                        else
+                            div.mb-3.mb-md-0 Please login into your account
+                    .col-md-6(align="center")
+                        if user 
+                            a.login-page-btn.logout Logout  
+                        else
+                            a.login-page-btn(href='/login') Log In  
+    section.printer-section.padding-b
+        .container
+            .printers
+                .card-deck
+                    .row
+                        .col-lg-3.col-md-6.col-sm-6.mb-2(align="center")
+                            .card.slanted-border.px-2.pt-4.h-100(style="width: 15rem;")
+                                img.card-img-top(src='./assests/skimpy.png' alt='Skimpy')
+                                .card-body
+                                    h5.card-title Skimpy
+                                    p.card-text Redistributes the amount of filament required by the object across multiple copies of it
+                        .col-lg-3.col-md-6.col-sm-6.mb-2(align="center")
+                            .card.slanted-border.px-2.pt-4.h-100(style="width: 15rem;")
+                                img.card-img-top(src='./assests/dwindle.png' alt='Dwindle')
+                                .card-body
+                                    h5.card-title Dwindle
+                                    p.card-text Reduces print quality as the printer spends more time printing
+                        .col-lg-3.col-md-6.col-sm-6.mb-2(align="center")
+                            .card.slanted-border.px-2.pt-4.h-100(style="width: 15rem;")
+                                img.card-img-top(src='./assests/postal.png' alt='Postal')
+                                .card-body
+                                    h5.card-title Postal
+                                    p.card-text Reshapes the model for more convenient shipping
+                        .col-lg-3.col-md-6.col-sm-6.mb-2(align="center")
+                            .card.slanted-border.px-2.pt-4.h-100(style="width: 15rem;")
+                                img.card-img-top(src='./assests/breezy.png' alt='Breezy')
+                                .card-body
+                                    h5.card-title Breezy
+                                    p.card-text Redirects the printer’s nozzle based on your local wind data
+    if(user)
+        if(user.role !== 'admin')
+            if(!user.printer)
+                section.printer-select-section.padding-b
+                    .container
+                        .printer-select.px-4.py-4
+                            section.alert-insert
+                                form.printer-form
+                                    .row
+                                        .col-12
+                                            .form-group
+                                                label.mr-sm-2(for='printer') Choose your printer to continue
+                                                select#printer.custom-select.mr-sm-2(name='printer')
+                                                    option
+                                                    option Skimpy
+                                                    option Dwindle
+                                                    option Postal
+                                                    option Breezy
+                                        .col-12(align="end")
+                                            button.printer-select-btn Submit Printer 
+            else 
+                section.printer-section.padding-b
+                    .container
+                        .row
+                            .col-lg-3.col-md-4.col-sm-6.col-7.text-center(style="left:30px")
+                                .your-printer-label-style
+                                    | Your Printer
+                            .col-12
+                                .printer.px-4.py-4
+                                    .row
+                                        .col-lg-4(align="center")
+                                            .card.slanted-border.pt-4.h-100(style="width: 15rem;")
+                                                - if(user.printer === 'Skimpy')
+                                                    img.card-img-top(src='./assests/skimpy.png' alt=user.printer)
+                                                - if(user.printer === 'Dwindle')
+                                                    img.card-img-top(src='./assests/dwindle.png' alt=user.printer)
+                                                - if(user.printer === 'Postal')
+                                                    img.card-img-top(src='./assests/postal.png' alt=user.printer)
+                                                - if(user.printer === 'Breezy')
+                                                    img.card-img-top(src='./assests/breezy.png' alt=user.printer)
+                                                .card-body
+                                                    h5.card-title= user.printer
+                                                    - if(user.printer === 'Skimpy')
+                                                        p.card-text Redistributes the amount of filament required by the object across multiple copies of it
+                                                    - if(user.printer === 'Dwindle')
+                                                        p.card-text Reduces print quality as the printer spends more time printing
+                                                    - if(user.printer === 'Postal')
+                                                        p.card-text Reshapes the model for more convenient shipping
+                                                    - if(user.printer === 'Breezy')
+                                                        p.card-text Redirects the printer’s nozzle based on your local wind data
+                                        .col-lg-6.align-self-center
+                                            - if(user.printer === 'Skimpy')
+                                                p.mt-4.mt-lg-0
+                                                    | This printer calculates the filament density of each object and changes the flow of the print in order to make better use of the material. It redistributes the amount of material it saves in the print job to make multiple copies of the item.
+                                            - if(user.printer === 'Dwindle')
+                                                p.mt-4.mt-lg-0
+                                                    | This printer works on two different levels. For each print, the speed and the flow of the machine reduces as the printers moves to higher layers. On the bigger picture, the further you are in the queue line, the lower the final speed and the material flow becomes.
+                                            - if(user.printer === 'Postal')
+                                                p.mt-4.mt-lg-0
+                                                    | This printer takes the dimension of the object, and based on its height it decides on the size of the shipping package that needs to be used. The printer modifies the other two dimensions (breadth and depth) to fit the selected shipping box.
+                                            - if(user.printer === 'Breezy')
+                                                p.mt-4.mt-lg-0
+                                                    | This printer collects the wind&rsquo;s direction and speed of the selected location for the last 24 hours and maps it into the print by dividing the print into 24 layers and shifting each of these layers by the amount of wind in the direction of the wind.
+                section.submission-section.padding-b
+                    .container
+                        .row
+                            .col-lg-3.col-md-4.col-sm-6.col-8.text-center(style="left:30px")
+                                .submit-files-label-style
+                                    | Submit Your Files
+                            .col-12
+                                .submission.px-4.py-4
+                                    section.alert-insert
+                                        form.upload-stl-file-form
+                                            .row
+                                                if(!user.submission1)
+                                                    .col-12
+                                                        .form-group
+                                                            .custom-file
+                                                                input#submission1.custom-file-input(type='file' name= 'submission1')
+                                                                label#file1-label.custom-file-label(for='submission1') Choose file
+                                                    .col-12(align="end")
+                                                        button.mt-2.file-btn(disabled='') Submit File Round 1
+                                                if(user.submission1 && !user.submission2 && user.printStatus !== 'delivered')
+                                                    .col-12
+                                                        .alert.alert-success(role='alert').mb-0
+                                                            | File for Round 1 successfully submitted
+                                                if(user.submission1 && user.printStatus === 'delivered' && !user.submission2)
+                                                    .col-12
+                                                        .form-group
+                                                            .custom-file
+                                                                input#submission2.custom-file-input(type='file' name= 'submission2')
+                                                                label#file2-label.custom-file-label(for='submission2') Choose file
+                                                    .col-12(align="end")
+                                                        button.mt-2.file-btn(disabled='') Submit File Round 2
+                                                if(user.submission2)
+                                                    .col-lg-12
+                                                        .alert.alert-success(role='alert').mb-0
+                                                            | File for Round 2 successfully submitted    
+                section.tracking-section.padding-b
+                    .container
+                        .row
+                            .col-lg-3.col-md-4.col-sm-6.col-8.text-center(style="left:30px")
+                                .track-label-style
+                                    | Track your print
+                            .col-12
+                                .one-track
+                                    .tracking.px-5.py-4
+                                        .progress-1
+                                            .progress-track
+                                            #step1.progress-step(class=(user.printStatus === "received")? "is-complete" : undefined || (user.printStatus === "printing" || user.printStatus === "prepared" || user.printStatus === "shipped" || user.printStatus === "delivered")? "is-inactive" : undefined)
+                                                | We have received your file
+                                            #step2.progress-step(class=(user.printStatus === "printing") ? "is-complete" : undefined || (user.printStatus === "prepared" || user.printStatus === "shipped" || user.printStatus === "delivered") ? "is-inactive" : undefined)
+                                                | Your file is currently printing
+                                            #step3.progress-step(class=(user.printStatus === "prepared") ? "is-complete" : undefined || (user.printStatus === "shipped" || user.printStatus === "delivered") ? "is-inactive" : undefined)
+                                                | Your print is done! We are preparing your shipment
+                                            #step4.progress-step(class=(user.printStatus === "shipped") ? "is-complete" : undefined || (user.printStatus === "delivered") ? "is-inactive" : undefined)
+                                                | Your print is on its way to you
+                                            #step4.progress-step(class=(user.printStatus === "delivered" ? "is-complete" : undefined))
+                                                | Your print was delivered
+                                .two-track
+                                    .tracking.px-3.py-3
+                                        .progress-1
+                                            if(user.printStatus === "received")
+                                                .alert.alert-info(role='alert' style="width: 100%").mb-0
+                                                    | We have received your file
+                                            if(user.printStatus === "printing")
+                                                .alert.alert-info(role='alert' style="width: 100%").mb-0
+                                                    | Your file is currently printing
+                                            if(user.printStatus === "prepared")
+                                                .alert.alert-info(role='alert' style="width: 100%").mb-0
+                                                    | Your print is done! We are preparing your shipment
+                                            if(user.printStatus === "shipped")
+                                                .alert.alert-info(role='alert' style="width: 100%").mb-0
+                                                    | Your print is on its way to you
+                                            if(user.printStatus === "delivered")
+                                                .alert.alert-info(role='alert' style="width: 100%").mb-0
+                                                    | Your print was delivered
+                            

@@ -1,0 +1,95 @@
+extends base
+
+block content
+    section.users-section 
+        .container
+            .row
+                .col-md-12
+                    .users-table.table-responsive
+                        table.table.table-striped
+                            thead.thead-dark
+                                tr
+                                    th(scope='col') Name
+                                    th(scope='col') Printer
+                                    th(scope='col') Round 1
+                                    th(scope='col') Upload 1
+                                    th(scope='col') Round 2
+                                    th(scope='col') Upload 2
+                                    th(scope='col') Print Status
+                                    th(scope='col')
+                            tbody
+                                each u in users
+                                    if(u.printer)
+                                        tr
+                                            td= u.name
+                                            td= u.printer
+                                            td
+                                                if(u.submission1)
+                                                    a.download-file-btn(title='Download Round 1' href=`./img/users/${u.submission1}` download)
+                                                        i.fas.fa-file-download
+                                            td 
+                                                if(u.submission1)
+                                                    a.openUpload1(title='Upload Round 1' data-id=u._id data-toggle='modal' data-target='#round1Modal-lg')
+                                                        i.fas.fa-file-upload
+                                            td
+                                                if(u.submission2)
+                                                    a.download-file-btn(title='Download Round 2' href=`./img/users/${u.submission2}` download)
+                                                        i.fas.fa-file-download
+                                            td 
+                                                if(u.submission2)
+                                                    a.openUpload2(title='Upload Round 2' data-id=u._id data-toggle='modal' data-target='#round2Modal-lg')
+                                                        i.fas.fa-file-upload
+                                            td= u.printStatus
+                                            td
+                                                a.openEdit(title='Edit Print Status' data-id=u._id data-printStatus=u.printStatus data-toggle='modal' data-target='#setStatusModal-lg')
+                                                    i.fas.fa-edit
+        #round1Modal-lg.modal.fade(tabindex='-1' role='dialog' aria-labelledby='round1ModalLabel' aria-hidden='true')
+            .modal-dialog.modal-dialog-centered(role='document')
+                .modal-content
+                    .modal-header
+                        h5#round1ModalLabel.modal-title Upload Images for Round 1
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') &times;
+                    .modal-body
+                        section.alert-insert
+                        form.round-1-form
+                                .form-group
+                                    .custom-file
+                                        input#round1.custom-file-input(type='file' name= 'round1')
+                                        label#file1-label.custom-file-label(for='round1') Choose file
+                                button.status-select-btn.float-right.file-btn(disabled='') Upload to Gallery
+        #round2Modal-lg.modal.fade(tabindex='-1' role='dialog' aria-labelledby='round2ModalLabel' aria-hidden='true')
+            .modal-dialog.modal-dialog-centered(role='document')
+                .modal-content
+                    .modal-header
+                        h5#round2ModalLabel.modal-title Upload Images for Round 2
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') &times;
+                    .modal-body
+                        section.alert-insert1
+                        form.round-2-form     
+                            .form-group
+                                .custom-file
+                                    input#round2.custom-file-input(type='file' name= 'round2')
+                                    label#file1-label.custom-file-label(for='round2') Choose file
+                            button.status-select-btn.float-right.file-btn(disabled='') Upload to Gallery        
+        #setStatusModal-lg.modal.fade(tabindex='-1' role='dialog' aria-labelledby='setStatusModalLabel' aria-hidden='true')
+            .modal-dialog.modal-dialog-centered(role='document')
+                .modal-content
+                    .modal-header
+                        h5#setStatusModalLabel.modal-title Edit Print Delivery Status
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') &times;
+                    .modal-body
+                        section.alert-insert2
+                        form.set-status-form
+                            .form-group
+                                label.mr-sm-2(for='printStatusSelect') Please set the current print status
+                                select#printStatusSelect.custom-select(name='printStatusSelect')
+                                    option received
+                                    option printing
+                                    option prepared
+                                    option shipped
+                                    option delivered
+                            button.status-select-btn.float-right Set Status
+
