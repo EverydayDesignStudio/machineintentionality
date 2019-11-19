@@ -2,14 +2,8 @@ const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('./../utils/appError');
 
-exports.getOverview = (req, res) => {
-  res.status(200).render('overview', {
-    title: 'Overview Page',
-    bg: '../assests/print_background.png'
-  });
-};
-
 exports.getAbout = (req, res) => {
+
   res.status(200).render('about', {
     title: 'About',
     color: 'background-color: #e4f5e7;'
