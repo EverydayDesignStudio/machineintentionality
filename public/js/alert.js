@@ -43,3 +43,29 @@ export const showAlert2 = (type, msg) => {
     .insertAdjacentHTML('afterbegin', markup);
   window.setTimeout(hideAlert, 5000);
 };
+
+export const showAlert3 = (type, msg) => {
+  hideAlert();
+
+  const markup = `<div class="alert alert-dismissible alert-${type}" role="alert">${msg}                      
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button></div>`;
+  document
+    .querySelector('.alert-insert3')
+    .insertAdjacentHTML('afterbegin', markup);
+  window.setTimeout(hideAlert, 5000);
+};
+
+export const showAlert4 = (type, msg) => {
+  hideAlert();
+
+  const markup = `<div class="alert alert-dismissible alert-${type}" role="alert">${msg}                      
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button></div>`;
+  document
+    .querySelector('.alert-insert4')
+    .insertAdjacentHTML('afterbegin', markup);
+  window.setTimeout(hideAlert, 5000);
+};

@@ -8,6 +8,7 @@ import {
   updatePrinter,
   uploadSTLFiles,
   updateUser,
+  deleteUser,
   updateImage
 } from './updateSettings';
 
@@ -15,6 +16,7 @@ const printerForm = document.querySelector('.printer-form');
 const uploadSTLForm = document.querySelector('.upload-stl-file-form');
 
 const statusForm = document.querySelector('.set-status-form');
+const deleteForm = document.querySelector('.delete-form');
 const round1Form = document.querySelector('.round-1-form');
 const round2Form = document.querySelector('.round-2-form');
 
@@ -57,6 +59,14 @@ if (statusForm) {
     const printStatus = document.getElementById('printStatusSelect').value;
     const userID = document.querySelector('.active-edit').dataset.id;
     updateUser(printStatus, userID);
+  });
+}
+
+if (deleteForm) {
+  deleteForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const userID = document.querySelector('.active-delete').dataset.id;
+    deleteUser(userID);
   });
 }
 

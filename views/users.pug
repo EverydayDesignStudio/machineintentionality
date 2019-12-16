@@ -17,6 +17,7 @@ block content
                                     th(scope='col') Upload 2
                                     th(scope='col') Print Status
                                     th(scope='col')
+                                    th(scope='col')
                             tbody
                                 each u in users
                                     if(u.printer)
@@ -43,6 +44,9 @@ block content
                                             td
                                                 a.openEdit(title='Edit Print Status' data-id=u._id data-printStatus=u.printStatus data-toggle='modal' data-target='#setStatusModal-lg')
                                                     i.fas.fa-edit
+                                            td
+                                                a.openDelete(title='Delete User' data-id=u._id data-toggle='modal' data-target='#deleteModal-lg')
+                                                    i.fa.fa-trash
         #round1Modal-lg.modal.fade(tabindex='-1' role='dialog' aria-labelledby='round1ModalLabel' aria-hidden='true')
             .modal-dialog.modal-dialog-centered(role='document')
                 .modal-content
@@ -53,11 +57,11 @@ block content
                     .modal-body
                         section.alert-insert
                         form.round-1-form
-                                .form-group
-                                    .custom-file
-                                        input#round1.custom-file-input(type='file' name= 'round1')
-                                        label#file1-label.custom-file-label(for='round1') Choose file
-                                button.status-select-btn.float-right.file-btn(disabled='') Upload to Gallery
+                            .form-group
+                                .custom-file
+                                    input#round1.custom-file-input(type='file' name= 'round1')
+                                    label#file1-label.custom-file-label(for='round1') Choose file
+                            button.status-select-btn.float-right.file-btn(disabled='') Upload to Gallery
         #round2Modal-lg.modal.fade(tabindex='-1' role='dialog' aria-labelledby='round2ModalLabel' aria-hidden='true')
             .modal-dialog.modal-dialog-centered(role='document')
                 .modal-content
@@ -92,4 +96,16 @@ block content
                                     option shipped
                                     option delivered
                             button.status-select-btn.float-right Set Status
-
+        #deleteModal-lg.modal.fade(tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true')
+            .modal-dialog.modal-dialog-centered(role='document')
+                .modal-content
+                    .modal-header
+                        h5#deleteModalLabel.modal-title Delete User
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') &times;
+                    .modal-body
+                        section.alert-insert3
+                        form.delete-form
+                            .form-group
+                                label Are you sure you want to delete?
+                            button.status-select-btn.float-right Delete

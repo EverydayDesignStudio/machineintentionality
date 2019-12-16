@@ -46,7 +46,7 @@ block content
                                     p.card-text Redirects the printer’s nozzle based on your local wind data
     if(user)
         if(user.role !== 'admin')
-            if(!user.printer)
+            if(!user.printer || !user.submission2)
                 section.printer-select-section.padding-b
                     .container
                         .printer-select.px-4.py-4
@@ -55,7 +55,7 @@ block content
                                     .row
                                         .col-12
                                             .form-group
-                                                label.mr-sm-2(for='printer') Choose your printer to continue
+                                                label.mr-sm-2(for='printer') Please select your printer
                                                 select#printer.custom-select.mr-sm-2(name='printer')
                                                     option
                                                     option Skimpy
@@ -64,7 +64,7 @@ block content
                                                     option Breezy
                                         .col-12(align="end")
                                             button.printer-select-btn Submit Printer 
-            else 
+            if(user.printer) 
                 section.printer-section.padding-b
                     .container
                         .row
@@ -115,10 +115,14 @@ block content
                                     | Submit Your Files
                             .col-12
                                 .submission.px-4.py-4
-                                    section.alert-insert
+                                    section.alert-insert4
                                         form.upload-stl-file-form
                                             .row
-                                                if(!user.submission1)
+                                                if(user.submission1 && !user.submission2 && user.printStatus !== 'delivered')
+                                                    .col-12
+                                                        .alert.alert-success(role='alert').mb-6
+                                                            | File for Round 1 successfully submitted
+                                                if((!user.submission1 || user.printStatus !== 'delivered') && !user.submission2)
                                                     .col-12
                                                         .form-group
                                                             .custom-file
@@ -126,11 +130,11 @@ block content
                                                                 label#file1-label.custom-file-label(for='submission1') Choose file
                                                     .col-12(align="end")
                                                         button.mt-2.file-btn(disabled='') Submit File Round 1
-                                                if(user.submission1 && !user.submission2 && user.printStatus !== 'delivered')
-                                                    .col-12
-                                                        .alert.alert-success(role='alert').mb-0
-                                                            | File for Round 1 successfully submitted
-                                                if(user.submission1 && user.printStatus === 'delivered' && !user.submission2)
+                                                if(user.submission2)
+                                                    .col-lg-12
+                                                        .alert.alert-success(role='alert').mb-6
+                                                            | File for Round 2 successfully submitted    
+                                                if((user.submission1 && user.printStatus === 'delivered') || user.submission2)
                                                     .col-12
                                                         .form-group
                                                             .custom-file
@@ -138,10 +142,6 @@ block content
                                                                 label#file2-label.custom-file-label(for='submission2') Choose file
                                                     .col-12(align="end")
                                                         button.mt-2.file-btn(disabled='') Submit File Round 2
-                                                if(user.submission2)
-                                                    .col-lg-12
-                                                        .alert.alert-success(role='alert').mb-0
-                                                            | File for Round 2 successfully submitted    
                 section.tracking-section.padding-b
                     .container
                         .row
@@ -181,4 +181,6 @@ block content
                                             if(user.printStatus === "delivered")
                                                 .alert.alert-info(role='alert' style="width: 100%").mb-0
                                                     | Your print was delivered
-                            
+    script(type='text/javascript').
+        var data = JSON.parse('!{JSON.stringify(user)}');
+        document.getElementById('printer').value = data.printer

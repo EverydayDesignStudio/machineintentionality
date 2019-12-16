@@ -34,6 +34,6 @@ router
     userController.uploadImage,
     userController.saveImage,
     userController.updateUser
-  );
+  ).delete(userController.deleteUser);
 
 module.exports = router;

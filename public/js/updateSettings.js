@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import axios from 'axios';
-import { showAlert, showAlert1, showAlert2 } from './alert';
+import { showAlert, showAlert1, showAlert2, showAlert3, showAlert4 } from './alert';
 
 export const updatePrinter = async printer => {
   try {
@@ -32,13 +32,13 @@ export const uploadSTLFiles = async data => {
       data
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'STL File Uploaded successfully');
+      showAlert4('success', 'STL File Uploaded successfully');
       window.setTimeout(() => {
         location.reload();
       }, 2000);
     }
   } catch (err) {
-    showAlert('danger', err.response.data.message);
+    showAlert4('danger', err.response.data.message);
   }
 };
 
@@ -59,7 +59,24 @@ export const updateUser = async (printStatus, userID) => {
       }, 2000);
     }
   } catch (err) {
-    showAlert('danger', err.response.data.message);
+    showAlert2('danger', err.response.data.message);
+  }
+};
+
+export const deleteUser = async userID => {
+  try {
+    const res = await axios({
+      method: 'DELETE',
+      url: '/api/v1/users/' + userID
+    });
+    if (res.status === 204) {
+      showAlert3('success', 'User deleted successfully');
+      window.setTimeout(() => {
+        location.reload();
+      }, 2000);
+    }
+  } catch (err) {
+    showAlert3('danger', err.response.data.message);
   }
 };
 

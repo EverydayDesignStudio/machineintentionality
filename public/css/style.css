@@ -695,6 +695,7 @@ div.em {
 }
 
 .openEdit,
+.openDelete,
 .openUpload1,
 .openUpload2 {
   cursor: pointer;

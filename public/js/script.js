@@ -83,15 +83,23 @@ $('.openEdit').on('click', function() {
   $('#printStatusSelect').val(selectedPrintVal);
 });
 
-$('#setStatusModal').on('hidden.bs.modal', function(e) {
+$('#setStatusModal-lg').on('hidden.bs.modal', function(e) {
   $('.openEdit').removeClass('active-edit');
+});
+
+$('.openDelete').on('click', function() {
+  $(this).addClass('active-delete');
+});
+
+$('#deleteModal-lg').on('hidden.bs.modal', function(e) {
+  $('.openDelete').removeClass('active-delete');
 });
 
 $('.openUpload1').on('click', function() {
   $(this).addClass('active-edit');
 });
 
-$('#round1Modal').on('hidden.bs.modal', function(e) {
+$('#round1Modal-lg').on('hidden.bs.modal', function(e) {
   $('.openUpload1').removeClass('active-edit');
 });
 
@@ -99,6 +107,6 @@ $('.openUpload2').on('click', function() {
   $(this).addClass('active-edit');
 });
 
-$('#round2Modal').on('hidden.bs.modal', function(e) {
+$('#round2Modal-lg').on('hidden.bs.modal', function(e) {
   $('.openUpload2').removeClass('active-edit');
 });
