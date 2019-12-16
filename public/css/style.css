@@ -253,8 +253,8 @@ div.em {
 
 .locations .card {
   position: relative;
-  clip-path: polygon(87% 0, 100% 18%, 100% 100%, 0 100%, 0 0);
-  -webkit-clip-path: polygon(87% 0, 100% 18%, 100% 100%, 0 100%, 0 0);
+  clip-path: polygon(89% 0, 100% 14%, 100% 100%, 0 100%, 0 0);
+  -webkit-clip-path: polygon(89% 0, 100% 14%, 100% 100%, 0 100%, 0 0);
 }
 
 .locations .card:after {
@@ -615,8 +615,9 @@ div.em {
 }
 
 .gallery img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 50%;
+  max-height: 50%;
+  object-fit: fill;
 }
 
 .gallery video {
@@ -627,9 +628,11 @@ div.em {
 #all hr:nth-last-child(1) {
   display: none;
 }
+
 #round1 hr:nth-last-child(1) {
   display: none;
 }
+
 #round2 hr:nth-last-child(1) {
   display: none;
 }
@@ -716,7 +719,6 @@ div.em {
 .status-select-btn:disabled {
   cursor: not-allowed;
 }
-
 
 /* Final Login and signup*/
 

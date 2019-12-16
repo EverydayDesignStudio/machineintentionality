@@ -1,7 +1,13 @@
 /* eslint-disable */
 
 import axios from 'axios';
-import { showAlert, showAlert1, showAlert2, showAlert3, showAlert4 } from './alert';
+import {
+  showAlert,
+  showAlert1,
+  showAlert2,
+  showAlert3,
+  showAlert4
+} from './alert';
 
 export const updatePrinter = async printer => {
   try {
@@ -87,23 +93,22 @@ export const updateImage = async (userID, data, image) => {
       url: '/api/v1/users/' + userID,
       data
     });
-    if(image === 'image1') {
+    if (image === 'image1') {
       if (res.data.status === 'success') {
-        showAlert('success', 'Image updated successfully');
+        showAlert('success', 'Image/Video updated successfully');
         window.setTimeout(() => {
           location.reload();
         }, 2000);
       }
     }
-    if(image === 'image2') {
+    if (image === 'image2') {
       if (res.data.status === 'success') {
-        showAlert1('success', 'Image updated successfully');
+        showAlert1('success', 'Image/Video updated successfully');
         window.setTimeout(() => {
           location.reload();
         }, 2000);
       }
     }
-    
   } catch (err) {
     showAlert('danger', err.response.data.message);
   }
