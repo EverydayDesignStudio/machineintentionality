@@ -8625,7 +8625,7 @@ function () {
 
             if (image === 'image1') {
               if (res.data.status === 'success') {
-                (0, _alert.showAlert)('success', 'Image updated successfully');
+                (0, _alert.showAlert)('success', 'Image/Video updated successfully');
                 window.setTimeout(function () {
                   location.reload();
                 }, 2000);
@@ -8634,7 +8634,7 @@ function () {
 
             if (image === 'image2') {
               if (res.data.status === 'success') {
-                (0, _alert.showAlert1)('success', 'Image updated successfully');
+                (0, _alert.showAlert1)('success', 'Image/Video updated successfully');
                 window.setTimeout(function () {
                   location.reload();
                 }, 2000);
@@ -9214,7 +9214,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52793" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60530" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

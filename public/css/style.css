@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: Gibson, sans-serif;
+  font-family: canada-type-gibson, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
@@ -32,7 +32,7 @@ body {
   font-style: italic;
   text-transform: uppercase;
   font-size: 36px;
-  padding: 6px 20px;
+  padding: 12px 20px 2px;
   margin: 0;
 }
 
@@ -292,10 +292,11 @@ div.em {
   color: #fff !important;
   background: #000000;
   border: none;
-  padding: 5px 60px;
+  padding: 7px 60px;
   font-weight: 900;
   font-style: italic;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .login .login-page-btn:hover,
@@ -333,7 +334,6 @@ div.em {
 }
 
 .printers .card .card-img-top {
-  height: 30%;
   width: 30%;
 }
 
@@ -381,11 +381,12 @@ div.em {
   color: #fff;
   background: #000000;
   border: none;
-  padding: 5px 60px;
+  padding: 8px 60px 5px;
   font-weight: 900;
   font-style: italic;
   text-align: center;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .printer-select-btn:focus {
@@ -407,7 +408,6 @@ div.em {
 }
 
 .printer .card .card-img-top {
-  height: 30%;
   width: 30%;
 }
 
@@ -428,7 +428,7 @@ div.em {
 
 .printer p {
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .printer .card:after {
@@ -443,7 +443,7 @@ div.em {
 .your-printer-label-style {
   background-color: black;
   color: white;
-  padding: 3px 0;
+  padding: 6px 0 2px;
   font-weight: 900;
   font-style: italic;
   text-transform: uppercase;
@@ -454,7 +454,7 @@ div.em {
 .submit-files-label-style {
   background-color: black;
   color: white;
-  padding: 3px 0;
+  padding: 6px 0 2px;
   font-weight: 900;
   font-style: italic;
   text-transform: uppercase;
@@ -474,6 +474,7 @@ div.em {
   font-weight: 900;
   font-style: italic;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .submission .file-btn:focus {
@@ -487,7 +488,7 @@ div.em {
 .track-label-style {
   background-color: black;
   color: white;
-  padding: 3px;
+  padding: 6px 0 2px;
   font-weight: 900;
   font-style: italic;
   text-transform: uppercase;
@@ -521,7 +522,7 @@ div.em {
   position: relative;
   width: 100%;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #a7a7a7;
   padding-right: 20px;
 }
@@ -599,6 +600,7 @@ div.em {
   color: #fff;
   font-weight: 900;
   font-style: italic;
+  text-transform: uppercase;
 }
 
 .gallery .nav-tabs .nav-link:focus {
@@ -789,22 +791,18 @@ div.em {
 .form-control::-webkit-input-placeholder {
   font-size: 13px;
   color: #333;
-  font-family: 'Gibson', sans-serif;
 }
 .form-control::-moz-placeholder {
   font-size: 13px;
   color: #333;
-  font-family: 'Gibson', sans-serif;
 }
 .form-control:-ms-input-placeholder {
   font-size: 13px;
   color: #333;
-  font-family: 'Gibson', sans-serif;
 }
 .form-control:-moz-placeholder {
   font-size: 13px;
   color: #333;
-  font-family: 'Gibson', sans-serif;
 }
 
 .login-btn,
@@ -819,9 +817,11 @@ div.em {
   align-items: center;
   cursor: pointer;
   padding: 0;
+  padding-top: 3px;
   background: #333;
   color: #fff;
   font-size: 15px;
+  text-transform: uppercase;
 }
 
 .login-btn:focus,
