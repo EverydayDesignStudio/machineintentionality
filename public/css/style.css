@@ -617,14 +617,15 @@ div.em {
 }
 
 .gallery img {
-  max-width: 50%;
-  max-height: 50%;
-  object-fit: fill;
+  object-fit: cover;
+  width:130px;
+  height:130px;
+  margin: 10px;
 }
 
 .gallery video {
-  max-width: 100%;
-  max-height: 100%;
+  width:250px;
+  height:130px;
 }
 
 #all hr:nth-last-child(1) {
@@ -669,6 +670,7 @@ div.em {
 
 .users-table .table thead th {
   border-bottom: 1px solid #000;
+  font-weight: 400;
 }
 
 .users-table .table td {
