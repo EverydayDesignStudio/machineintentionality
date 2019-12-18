@@ -618,14 +618,14 @@ div.em {
 
 .gallery img {
   object-fit: cover;
-  width:130px;
-  height:130px;
+  width: 130px;
+  height: 130px;
   margin: 10px;
 }
 
 .gallery video {
-  width:250px;
-  height:130px;
+  width: 250px;
+  height: 130px;
 }
 
 #all hr:nth-last-child(1) {
